@@ -71,10 +71,11 @@ Nguồn evidence: `detection_predictions.json` và `visuals/detection_prediction
   Vị trí tọa độ x, y tương đối của box cho thấy đối tượng chiếm nửa bên phải gần hết chiều dọc bức ảnh.
 
 - So sánh số prediction ở hai threshold:
-  Prediction threshold là 0.35 có 11 predictions, khi tăng lên 0.60 thì số lượng giảm xuống còn 6 predictions.
+  Tại `threshold = 0.35`, mô hình phát hiện tổng cộng **11 vật thể** trong sample `kitchen` (2 person, 5 bowl, 2 oven, 2 cup). Trong đó có các vật thể độ tự tin trung bình như `cup` (score 0.38, 0.45) hay `bowl` (score 0.38 - 0.50). Khi tăng lên `threshold = 0.60`, số lượng giảm mạnh còn **6 vật thể** (2 person, 2 bowl, 2 oven). Toàn bộ 2 `cup` và 3 `bowl` score dưới 0.6 đã bị loại bỏ.
 
 - Điều gì thay đổi đối với độ bao phủ và khối lượng reviewer cần xem?
-  Nếu threshold quá thấp sẽ có quá nhiều obj rác để review, quá cao thì sẽ quá ít obj nên phải tự vẽ thêm bbox.
+  - *Threshold thấp (0.35):* Độ bao phủ cao, giữ được các vật thể mờ/nhỏ (như 2 chiếc cốc), nhưng reviewer phải duyệt khối lượng lớn (11 boxes) và dễ phải tự xóa các box rác (False Positives).
+  - *Threshold cao (0.60):* Ít box rác, reviewer duyệt rất nhàn (chỉ 6 boxes). Tuy nhiên độ bao phủ kém (False Negatives cao) vì mô hình bỏ sót hoàn toàn 2 chiếc cốc và 3 cái bát $\rightarrow$ Annotator phải tốn rất nhiều công sức để tự vẽ hộp bổ sung thủ công cho 5 vật thể này.
 
 - Đề xuất một quy tắc box chặt: Box phải ôm sát 4 mép ngoài cùng của vật thể, không cắt lẹm và không thừa nền.
 
