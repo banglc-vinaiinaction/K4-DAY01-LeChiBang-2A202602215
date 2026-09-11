@@ -99,6 +99,7 @@ Nguồn evidence: `segmentation_predictions.json` và `visuals/segmentation_pred
     ]
   }
   ```
+  *(Mô tả hình dáng: Đa giác này gồm 348 điểm tọa độ uốn lượn bám sát theo biên dạng đường viền phức tạp của cơ thể người như đầu, vai, thân, thay vì là một hình khối cơ bản cứng nhắc).*
 
 - Polygon bổ sung chi tiết gì so với box? 
   Polygon ôm sát đường viền của vật thể ở cấp độ pixel, giúp loại bỏ phần background (hậu cảnh) và cung cấp thông tin chính xác về hình dáng, diện tích thực tế của vật thể.
