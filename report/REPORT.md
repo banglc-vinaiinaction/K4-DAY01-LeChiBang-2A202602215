@@ -71,12 +71,12 @@ Nguồn evidence: `detection_predictions.json` và `visuals/detection_prediction
   Vị trí tọa độ x, y tương đối của box cho thấy đối tượng chiếm nửa bên phải gần hết chiều dọc bức ảnh.
 
 - So sánh số prediction ở hai threshold:
-  Prediction threshold là 0.35 có 11 predictions, nếu tăng lên 0.5 thì số lượng sẽ giảm xuống và ngược lại.
+  Prediction threshold là 0.35 có 11 predictions, khi tăng lên 0.60 thì số lượng giảm xuống còn 6 predictions.
 
 - Điều gì thay đổi đối với độ bao phủ và khối lượng reviewer cần xem?
-  Nếu threshold quá cao nên sẽ nhiều obj để review, quá thấp thì sẽ quá ít để review và phải vẽ thêm bbox.
+  Nếu threshold quá thấp sẽ có quá nhiều obj rác để review, quá cao thì sẽ quá ít obj nên phải tự vẽ thêm bbox.
 
-- Đề xuất một quy tắc box chặt: Góc bo chặt vật thể cần review.
+- Đề xuất một quy tắc box chặt: Box phải ôm sát 4 mép ngoài cùng của vật thể, không cắt lẹm và không thừa nền.
 
 - Với object bị che khuất/cắt mép, điều gì cần guideline hoặc escalation quyết định?
   Có bao nhiêu phần trăm có thể bỏ qua, vẽ box chỉ phần nhìn thấy hay cả phần bị che mờ? Nếu không rõ ràng cần quy trình escalation để đánh giá.
